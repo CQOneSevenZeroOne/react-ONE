@@ -4,13 +4,19 @@ export default class Xheader extends React.Component {
   render() {
     return (<div>
       <header style={{
+      	display:"flex",
+      	justifyContent: "space-between",
+		    alignItems: "center",
+		    flexDirection: "row",
           height: "50px",
-          lineHeight: "50px",
-          width: "100%",
+          padding:"0 20px",
           textAlign: "center",
-          color: "white",
-          backgroundColor: "red"
-        }}>今日头条</header>
+          backgroundColor: "#fff"
+        }}>
+      			<img src={require("../img/icon_menu.png")} />
+      			<span>ONE</span>
+      			<img src={require("../img/search_min.png")} style={{width:"18px",height:"18px"}} />
+      </header>
     </div>)
   }
 }

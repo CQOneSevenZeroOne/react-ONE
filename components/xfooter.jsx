@@ -4,29 +4,18 @@ class Xfooter extends React.Component {
     super(props);
   }
   render() {
-    return (<div className="weui-tab">
-      <div className="weui-tab__panel"></div>
-      <div className="weui-tabbar" style={{
-          position: "fixed"
-        }}>
-        <a href="#/index/wechat" className="weui-tabbar__item weui-bar__item_on">
-          <img src="./images/icon_tabbar.png" alt="" className="weui-tabbar__icon"/>
-          <p className="weui-tabbar__label">微信</p>
-        </a>
-        <a href="#/index/contact" className="weui-tabbar__item">
-          <img src="./images/icon_tabbar.png" alt="" className="weui-tabbar__icon"/>
-          <p className="weui-tabbar__label">通讯录</p>
-        </a>
-        <a href="javascript:;" className="weui-tabbar__item">
-          <img src="./images/icon_tabbar.png" alt="" className="weui-tabbar__icon"/>
-          <p className="weui-tabbar__label">发现</p>
-        </a>
-        <a href="javascript:;" className="weui-tabbar__item">
-          <img src="./images/icon_tabbar.png" alt="" className="weui-tabbar__icon"/>
-          <p className="weui-tabbar__label">我</p>
-        </a>
-      </div>
-    </div>)
+    return (
+    	<div style={{
+    		position:"fixed",
+    		bottom:0,
+    		left:0
+    	}}>
+    		<img src={require("../img/home.png")} style={{width:"25%"}}/>
+    		<img src={require("../img/reading.png")} style={{width:"25%"}} />
+    		<img src={require("../img/music.png")} style={{width:"25%"}}/>
+    		<img src={require("../img/movie.png")} style={{width:"25%"}}/>
+    	</div>
+    )
   }
 }
 export default Xfooter;
