@@ -5,6 +5,7 @@ export default class Xwechat extends React.Component{
 		return (
 			<div>
 				<Xheader />
+				
 			</div>
 		)
 	}

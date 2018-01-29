@@ -51,13 +51,6 @@ module.exports = {
       }
     ]
   },
-  // 替换vue的加载路径
-  // resolve: {
-  //     alias: {
-  //         vue: "vue/dist/vue.js"
-  //     }
-  // },
-  // watch: true,
   // 插件
   plugins: [// 压缩JS文件
     // new webpack.optimize.UglifyJsPlugin(),
@@ -66,6 +59,6 @@ module.exports = {
   devServer: {
     contentBase: "./public",
     inline: true, //自动刷新
-    port: 12345
+    port: 5555
   }
 };
