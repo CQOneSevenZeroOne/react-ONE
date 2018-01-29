@@ -9,6 +9,8 @@ import { createStore } from 'redux'
 //选项卡组件
 import Xindex from "./components/tab/xindex.jsx";
 import Xpicturedetail from "./components/tab/xpicturedetail.jsx";
+import Xvdetail from "./components/others/xvdetail.jsx";
+
 
 const store = createStore((state={
     name:"测试",
@@ -36,6 +38,7 @@ ReactDOM.render(
             <div>
                 <Route path="/" component={Xindex}></Route>
                 <Route path="/picdetail" component={Xpicturedetail}></Route>   
+                <Route path="/vdetail" component={Xvdetail}></Route>
             </div>
         </Router>
     </Provider>
