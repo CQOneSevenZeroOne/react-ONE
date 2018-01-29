@@ -8,12 +8,13 @@ class Xfooter extends React.Component {
     	<div style={{
     		position:"fixed",
     		bottom:0,
-    		left:0
+    		left:0,
+    		background: "#eee"
     	}}>
-    		<img src={require("../img/home.png")} style={{width:"25%"}}/>
-    		<img src={require("../img/reading.png")} style={{width:"25%"}} />
-    		<img src={require("../img/music.png")} style={{width:"25%"}}/>
-    		<img src={require("../img/movie.png")} style={{width:"25%"}}/>
+    		<a href="#/index/home"><img src={require("../img/home.png")} style={{width:"25%"}}/></a>
+    		<a href="#/index/home"><img src={require("../img/reading.png")} style={{width:"25%"}} /></a>
+    		<a href="#/index/home"><img src={require("../img/music.png")} style={{width:"25%"}}/></a>
+    		<a href="#/index/home"><img src={require("../img/movie.png")} style={{width:"25%"}}/></a>
     	</div>
     )
   }
