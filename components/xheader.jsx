@@ -14,10 +14,10 @@ export default class Xheader extends React.Component {
       	justifyContent: "space-between",
 		    alignItems: "center",
 		    flexDirection: "row",
-          height: "50px",
-          padding:"0 20px",
-          textAlign: "center",
-          backgroundColor: "#fff"
+        height: "50px",
+        padding:"0 20px",
+        textAlign: "center",
+        backgroundColor: "#fff"
         }}>
       			<img src={require("../img/icon_menu.png")}  onClick={this.changeLeft.bind(this)}/>
       			<span>ONE</span>

@@ -9,7 +9,11 @@ import { createStore } from 'redux'
 //选项卡组件
 import Xindex from "./components/tab/xindex.jsx";
 <<<<<<< HEAD
+<<<<<<< HEAD
 import Xmusic_detail from "./components/tab/xmusic_detail.jsx";
+=======
+import Xreading_detail from "./components/tab/xreading_detail.jsx";
+>>>>>>> fc6517a6dfbb9343427e17f742696b35f91e9827
 =======
 import Xpicturedetail from "./components/tab/xpicturedetail.jsx";
 import Xvdetail from "./components/others/xvdetail.jsx";
@@ -42,7 +46,11 @@ ReactDOM.render(
             <div>
 <<<<<<< HEAD
                 <Route path="/index" component={Xindex}></Route>
+<<<<<<< HEAD
 				<Route path="/music_detail" component={Xmusic_detail}></Route>
+=======
+                <Route path="/reading_detail" component={Xreading_detail}></Route>
+>>>>>>> fc6517a6dfbb9343427e17f742696b35f91e9827
 =======
                 <Route path="/" component={Xindex}></Route>
                 <Route path="/picdetail" component={Xpicturedetail}></Route>   
