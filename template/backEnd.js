@@ -37,7 +37,15 @@ app.post("/getVideoAll",function(req,res){
 		res.send(JSON.stringify(results));
 	});
 })
-
+//获取所有的首页数据
+app.post("/getAllOne",function(req,res){
+	//解决跨域问题
+	res.append("Access-Control-Allow-Origin","*");
+	connect.query(`select * from tb_one`,function(error,results,fields){
+		if(error)throw error;
+		res.send(JSON.stringify(results));
+	})
+})
 //监听端口
 server.listen(3000);
 console.log("开启服务器")
