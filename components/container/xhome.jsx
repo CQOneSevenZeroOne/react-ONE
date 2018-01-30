@@ -7,11 +7,7 @@ export default class Xwechat extends React.Component{
 		return (
 			<div>
 				<Xheader />
-<<<<<<< HEAD
-				
-=======
 				<Xonepicture />
->>>>>>> 2a4c6291f08d780573c4c3ccb286e24b114a6718
 			</div>
 		)
 	}
