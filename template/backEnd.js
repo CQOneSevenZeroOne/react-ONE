@@ -32,7 +32,7 @@ app.post("/getVideoAll",function(req,res){
 	//解决跨域问题
 	res.append("Access-Control-Allow-Origin","*");
 	//连接后执行相应功能
-	connect.query(`SELECT * FROM video where id = ${req.body.id}`, function(error, results, fields) {
+	connect.query(`SELECT * FROM video where video_id = ${req.body.id}`, function(error, results, fields) {
 		if(error) throw error;
 		res.send(JSON.stringify(results));
 	});

@@ -14,6 +14,7 @@ import Xpicturedetail from "./components/tab/xpicturedetail.jsx";
 import Xvdetail from "./components/others/xvdetail.jsx";
 
 const store = createStore((state={
+<<<<<<< HEAD
     src:'',
 	isShow:false
 },action)=>{
@@ -26,6 +27,36 @@ const store = createStore((state={
 			break;
 		default:
 			return state;
+=======
+    name:"测试",
+    src:"",
+    isShowGallery:false,
+    videoId:"",
+    vlength:0
+},action)=>{
+    switch(action.type){
+    	case "changeName":
+    		return {}
+    		break;
+     	case "changeVid":
+    		return Object.assign({}, state, {
+            	videoId: action.videoId,
+            	vlength: action.vlength
+          	})
+    		break;
+     	case "toNext":
+    		return Object.assign({}, state, {
+            	videoId: action.videoId,
+          	})
+    		break;
+    	case "toPrev":
+    		return Object.assign({}, state, {
+            	videoId: action.videoId,
+          	})
+    		break;
+     	default:
+     		return state
+>>>>>>> 88b8bf461d8e5faa315c3ea27cab0b25c3e963de
     }
 });
 
@@ -36,7 +67,11 @@ ReactDOM.render(
 				<Route path="/music_detail" component={Xmusic_detail}></Route>
                 <Route path="/reading_detail" component={Xreading_detail}></Route>
                 <Route path="/index" component={Xindex}></Route>
+<<<<<<< HEAD
                 <Route path="/picdetail/:id" component={Xpicturedetail}></Route>   
+=======
+                <Route path="/picdetail" component={Xpicturedetail}></Route>   
+>>>>>>> 88b8bf461d8e5faa315c3ea27cab0b25c3e963de
                 <Route path="/vdetail" component={Xvdetail}></Route>
             </div>
         </Router>
