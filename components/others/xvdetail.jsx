@@ -22,15 +22,13 @@ class Xvdetail extends React.Component {
 		        return (
 		        		<div key={index}>
     							<div className="title" >
-										<img src={require("../../img/video11.jpg")}/>
 										<h3>
 											{item.title}
 											<em>——关于{item.about}</em>
 										</h3>
 										<span>文/{item.author}</span>
 									</div>
-									<div className="cont">
-										{item.vcont}
+									<div className="cont" dangerouslySetInnerHTML={{ __html: item.vcont }}>
 									</div>
     						</div>
 		        )
@@ -38,17 +36,17 @@ class Xvdetail extends React.Component {
     		}(this)
     	}
     	<div className="vfooter">
-				<span>上一篇</span>
+				<button onClick={this.props.toPrev.bind(this)}>上一篇</button>
 				<a href="#/index/video">返回</a>
-				<span>下一篇</span>
+				<button onClick={this.props.toNext.bind(this)}>下一篇</button>
 			</div>
     </div>
    </div>
 		)
 	}
-	componentDidMount() {
+	loadlists(){
 		var _this = this;
-		console.log(this.props.videoId)
+		console.log("ajax",this.props.videoId)
 		$.ajax({
 			type: "post",
 			url: "http://localhost:3000/getVideoAll",
@@ -57,17 +55,49 @@ class Xvdetail extends React.Component {
 			},
 			success(data) {
 				data = JSON.parse(data);
-				_this.setState({
-					arr: data
-				})
+				if(data.length!=0){
+					_this.setState({
+						arr: data
+					})
+				}
+				
 			}
 		});
 	}
+	componentDidMount() {
+		this.loadlists();
+	}
 }
 export default connect((state) => {
+	console.log("connect",state)
 	return state
 }, (dispatch) => {
 	return {
-
+		toNext(){
+			console.log("tonext",this.props.videoId)
+			if(this.props.videoId<this.props.vlength){
+				dispatch({
+					type:"toNext",
+					videoId:Number(this.props.videoId)+1
+				})
+				console.log("success",this.props.videoId)
+				this.loadlists()
+			}else if(this.props.videoId==this.props.vlength){
+				this.loadlists()
+			}
+		},
+		toPrev(){
+			console.log("toprev",this.props.videoId)
+			if(this.props.videoId>1){
+				dispatch({
+					type:"toPrev",
+					videoId:Number(this.props.videoId)-1
+				})
+				console.log("success",this.props.videoId)
+				this.loadlists()
+			}else if(this.props.videoId==1){
+				this.loadlists()
+			}
+		}
 	}
 })(Xvdetail);

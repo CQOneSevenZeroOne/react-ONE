@@ -17,7 +17,8 @@ const store = createStore((state={
     name:"测试",
     src:"",
     isShowGallery:false,
-    videoId:""
+    videoId:"",
+    vlength:0
 },action)=>{
     switch(action.type){
     	case "changeName":
@@ -25,13 +26,18 @@ const store = createStore((state={
     		break;
      	case "changeVid":
     		return Object.assign({}, state, {
-            	videoId: action.videoId
+            	videoId: action.videoId,
+            	vlength: action.vlength
           	})
     		break;
-     	case "changeSrc":
+     	case "toNext":
     		return Object.assign({}, state, {
-            	src: action.src,
-            	isShowGallery: action.isShowGallery
+            	videoId: action.videoId,
+          	})
+    		break;
+    	case "toPrev":
+    		return Object.assign({}, state, {
+            	videoId: action.videoId,
           	})
     		break;
      	default:
@@ -45,7 +51,7 @@ ReactDOM.render(
             <div>
 				<Route path="/music_detail" component={Xmusic_detail}></Route>
                 <Route path="/reading_detail" component={Xreading_detail}></Route>
-                <Route path="/" component={Xindex}></Route>
+                <Route path="/index" component={Xindex}></Route>
                 <Route path="/picdetail" component={Xpicturedetail}></Route>   
                 <Route path="/vdetail" component={Xvdetail}></Route>
             </div>

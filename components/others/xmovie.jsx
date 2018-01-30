@@ -51,8 +51,10 @@ class Xmovie extends React.Component {
 				success(data){
 					data = JSON.parse(data);
 					_this.setState({
-						arr:data
+						arr:data,
+						vlength:data.length
 					})
+					console.log(_this.state)
 				},
 				error(){
 					console.log('error');
@@ -67,7 +69,8 @@ export default connect((state)=>{
 		changeVid(e){
 			dispatch({
 				type:"changeVid",
-				videoId:e.currentTarget.getAttribute('data-index')
+				videoId:e.currentTarget.getAttribute('data-index'),
+				vlength:this.state.vlength
 			})
 		}
 	}
