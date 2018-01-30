@@ -32,12 +32,33 @@ app.post("/getVideoAll",function(req,res){
 	//解决跨域问题
 	res.append("Access-Control-Allow-Origin","*");
 	//连接后执行相应功能
+	
 	connect.query(`SELECT * FROM video where id = ${req.body.id}`, function(error, results, fields) {
 		if(error) throw error;
 		res.send(JSON.stringify(results));
 	});
 })
-
+//显示音乐列表
+app.post("/getMusicAll",function(req,res){
+	//解决跨域问题
+	res.append("Access-Control-Allow-Origin","*");
+	//连接后执行相应功能
+	connect.query(`SELECT * FROM music`, function(error, results, fields) {
+		if(error) throw error;
+		res.send(JSON.stringify(results));
+	});
+})
+//显示音乐详情
+app.post("/getMusicDetail",function(req,res){
+	//解决跨域问题
+	res.append("Access-Control-Allow-Origin","*");
+	//连接后执行相应功能
+	console.log(req.body.id)
+	connect.query(`SELECT * FROM music where id = ${req.body.id}`, function(error, results, fields) {
+		if(error) throw error;
+		res.send(JSON.stringify(results));
+	});
+})
 //监听端口
 server.listen(3000);
 console.log("开启服务器")

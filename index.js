@@ -14,24 +14,21 @@ import Xpicturedetail from "./components/tab/xpicturedetail.jsx";
 import Xvdetail from "./components/others/xvdetail.jsx";
 
 const store = createStore((state={
-    name:"测试",
-    src:"",
-    isShowGallery:false
+    music_id:0
 },action)=>{
     switch(action.type){
     	case "changeName":
     		return {}
     		break;
-     	case "changeSrc":
+     	case "SaveMusic_id":
     		return Object.assign({}, state, {
-            	src: action.src,
-            	isShowGallery: action.isShowGallery
+            	music_id: action.music_id            	
           	})
     		break;
      	default:
      		return state
     }
-});
+})
 
 ReactDOM.render(
     <Provider store={store}>
@@ -39,7 +36,7 @@ ReactDOM.render(
             <div>
 				<Route path="/music_detail" component={Xmusic_detail}></Route>
                 <Route path="/reading_detail" component={Xreading_detail}></Route>
-                <Route exact  path="/" component={Xindex}></Route>
+                <Route path="/index" component={Xindex}></Route>
                 <Route path="/picdetail" component={Xpicturedetail}></Route>   
                 <Route path="/vdetail" component={Xvdetail}></Route>
             </div>

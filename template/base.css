@@ -34,6 +34,7 @@ body,p{
 .music_box .div-link{
     text-decoration:none;
     color:black;
+    font-weight: normal;
 }
 .music_box .text-author {
     font-size: 16px;
@@ -115,6 +116,9 @@ body,p{
     color: #808080;
     text-align: left;
 }
+.text-content {
+    padding: 0 20px;
+}
 .music_detail{
     overflow: hidden;
 }
@@ -149,14 +153,18 @@ body,p{
     text-align: center;
 }
 .music_detail .text-content p {
-    margin: 0 20px 20px 20px;
+    margin: 0 0px 20px 0px;
     font-size: 18px;
     font-weight: 300;
     line-height: 30px !important;
 }
-.music_detail p.fr-ft-ns, li.fr-ft-ns, td.fr-ft-ns {
-    font-size: 14px;
+ .music_detail .text-content .fr-ft-ns{
+ 	font-size: 14px;
+ 	text-align: center;
     margin-bottom: 0;
+}
+.text-content img{
+	width: 100%;
 }
 .one-gif-box img {
     width: 100%;
@@ -222,4 +230,9 @@ body,p{
     margin: 40px 0 5px 0;
     word-break: break-all;
     line-height: 25px !important;
+}
+.download {
+    margin: 26px 0;
+    text-align: center;
+    padding-bottom: 50px;
 }
