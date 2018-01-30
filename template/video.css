@@ -2,6 +2,9 @@ body,h3,p{
 	margin: 0;
 }
 /*影视列表页*/
+.xvideo{
+	width: 100%;margin-bottom: 62px;
+}
 .videos{
 	display: block;
 	padding: 0 20px;

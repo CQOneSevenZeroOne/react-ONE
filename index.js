@@ -16,11 +16,17 @@ import Xvdetail from "./components/others/xvdetail.jsx";
 const store = createStore((state={
     name:"测试",
     src:"",
-    isShowGallery:false
+    isShowGallery:false,
+    videoId:""
 },action)=>{
     switch(action.type){
     	case "changeName":
     		return {}
+    		break;
+     	case "changeVid":
+    		return Object.assign({}, state, {
+            	videoId: action.videoId
+          	})
     		break;
      	case "changeSrc":
     		return Object.assign({}, state, {

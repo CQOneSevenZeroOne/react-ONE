@@ -1,10 +1,11 @@
 import React from 'react';
 import $ from 'jQuery';
+import {connect} from 'react-redux';
 import Xheader from '../xheader.jsx';
 import '../../template/video.css';
-export default class Xmovie extends React.Component {
-	constructor(){
-		super();
+class Xmovie extends React.Component {
+	constructor(props){
+		super(props);
 		this.state = {
 			arr:[]
 		}
@@ -13,11 +14,14 @@ export default class Xmovie extends React.Component {
     return (
     <div>
     <Xheader />
+    <div className="xvideo">
     {
 	  	function(self){
 	  		return self.state.arr.map((item,index)=>{
 	        return (
-	        	<a className="videos" href="#/vdetail" key={index} data-id={item.video_id}>
+	        	<a className="videos" href="#/vdetail" key={index} data-index={item.video_id} onClick={
+	        		self.props.changeVid.bind(self)
+	        	}>
 				  		<header>-影视-</header>
 				  		<p className="title">
 				  			{item.title}
@@ -36,6 +40,7 @@ export default class Xmovie extends React.Component {
 	      })
 	    }(this)
     }
+    </div>
     </div>)
   }
   componentDidMount(){
@@ -48,7 +53,6 @@ export default class Xmovie extends React.Component {
 					_this.setState({
 						arr:data
 					})
-					console.log(_this.state.arr)
 				},
 				error(){
 					console.log('error');
@@ -56,3 +60,15 @@ export default class Xmovie extends React.Component {
 			});
 	}
 }
+export default connect((state)=>{
+	return state
+},(dispatch,props)=>{
+	return {
+		changeVid(e){
+			dispatch({
+				type:"changeVid",
+				videoId:e.currentTarget.getAttribute('data-index')
+			})
+		}
+	}
+})(Xmovie);
