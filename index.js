@@ -39,7 +39,7 @@ ReactDOM.render(
             <div>
 				<Route path="/music_detail" component={Xmusic_detail}></Route>
                 <Route path="/reading_detail" component={Xreading_detail}></Route>
-                <Route path="/" component={Xindex}></Route>
+                <Route exact  path="/" component={Xindex}></Route>
                 <Route path="/picdetail" component={Xpicturedetail}></Route>   
                 <Route path="/vdetail" component={Xvdetail}></Route>
             </div>

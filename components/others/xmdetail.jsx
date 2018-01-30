@@ -156,7 +156,14 @@ class Xmdetail extends React.Component{
             </tr>
         </tbody>
     </table>
+    <div className="download">
+	    <a href="http://m.wufazhuce.com/download"  className="ui-link">
+	        <img alt="「ONE · 一个」" className="one-image-exclude logo-img" src="http://image.wufazhuce.com/app_download.png"/>
+	    </a>
+	    <p className="download-text">下载「一个」APP</p>
+	</div>
     </div>
+    
         )
 	}
 }

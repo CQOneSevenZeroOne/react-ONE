@@ -87,7 +87,7 @@ body,p{
     width: 44px;
     height: 44px;
 }
-music_box .platform-icon {
+.music_box .platform-icon {
     position: absolute;
     left: 20px;
     bottom: 8px;
@@ -118,7 +118,6 @@ music_box .platform-icon {
 .music_detail{
     overflow: hidden;
 }
-
 .music_detail .text-detail {
     margin-bottom: 20px;
 }
@@ -159,6 +158,9 @@ music_box .platform-icon {
     font-size: 14px;
     margin-bottom: 0;
 }
+.one-gif-box img {
+    width: 100%;
+}
 .music_detail .page-sparate-title {
     font-size: 15px;
     margin-top: 60px;
@@ -193,6 +195,12 @@ music_box .platform-icon {
     height: 16px;
     border-radius: 50%;
     overflow: hidden;
+}
+.music_detail .page-table div {
+    line-height: 20px;
+}
+.page-table tr td {
+    vertical-align: top;
 }
 .music_detail .comment-user-info ul {
     float: left;

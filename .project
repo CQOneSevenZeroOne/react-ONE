@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>react-ONE</name>
+	<name>one</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -16,11 +16,7 @@
 	</natures>
 	<filteredResources>
 		<filter>
-<<<<<<< HEAD
-			<id>1517205198834</id>
-=======
-			<id>1517204422741</id>
->>>>>>> 2a4c6291f08d780573c4c3ccb286e24b114a6718
+			<id>1517274882930</id>
 			<name></name>
 			<type>26</type>
 			<matcher>
