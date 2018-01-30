@@ -14,22 +14,18 @@ import Xpicturedetail from "./components/tab/xpicturedetail.jsx";
 import Xvdetail from "./components/others/xvdetail.jsx";
 
 const store = createStore((state={
-    name:"测试",
-    src:"",
-    isShowGallery:false
+    src:'',
+	isShow:false
 },action)=>{
     switch(action.type){
-    	case "changeName":
-    		return {}
-    		break;
      	case "changeSrc":
-    		return Object.assign({}, state, {
-            	src: action.src,
-            	isShowGallery: action.isShowGallery
-          	})
-    		break;
-     	default:
-     		return state
+			return Object.assign({},state,{
+				src:action.src,
+				isShow:action.isShow
+			})
+			break;
+		default:
+			return state;
     }
 });
 
@@ -39,8 +35,8 @@ ReactDOM.render(
             <div>
 				<Route path="/music_detail" component={Xmusic_detail}></Route>
                 <Route path="/reading_detail" component={Xreading_detail}></Route>
-                <Route path="/" component={Xindex}></Route>
-                <Route path="/picdetail" component={Xpicturedetail}></Route>   
+                <Route path="/index" component={Xindex}></Route>
+                <Route path="/picdetail/:id" component={Xpicturedetail}></Route>   
                 <Route path="/vdetail" component={Xvdetail}></Route>
             </div>
         </Router>

@@ -41,7 +41,16 @@ app.post("/getVideoAll",function(req,res){
 app.post("/getAllOne",function(req,res){
 	//解决跨域问题
 	res.append("Access-Control-Allow-Origin","*");
-	connect.query(`select * from tb_one`,function(error,results,fields){
+	connect.query(`select * from tb_one  ORDER BY pic_date DESC`,function(error,results,fields){
+		if(error)throw error;
+		res.send(JSON.stringify(results));
+	})
+})
+//通过id获取所有tb_one中的数据
+app.post("/getOneById",function(req,res){
+	//解决跨域问题
+	res.append("Access-Control-Allow-Origin","*");
+	connect.query(`select * from tb_one  where id='${req.body.id}'`,function(error,results,fields){
 		if(error)throw error;
 		res.send(JSON.stringify(results));
 	})
