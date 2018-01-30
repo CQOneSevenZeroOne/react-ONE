@@ -19,9 +19,9 @@ export default class Xheader extends React.Component {
         textAlign: "center",
         backgroundColor: "#fff"
         }}>
-      			<img src={require("../img/icon_menu.png")}  onClick={this.changeLeft.bind(this)}/>
+      			<img src={require("../public/img/icon_menu.png")}  onClick={this.changeLeft.bind(this)}/>
       			<span>ONE</span>
-      			<img src={require("../img/search_min.png")} style={{width:"18px",height:"18px"}} />
+      			<img src={require("../public/img/search_min.png")} style={{width:"18px",height:"18px"}} />
       </header>
       <ul className="sideMenu" style={{left:this.state.leftVal}}>
       	<li><a href="#">App下载</a></li>
