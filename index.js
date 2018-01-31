@@ -14,7 +14,6 @@ import Xpicturedetail from "./components/tab/xpicturedetail.jsx";
 import Xvdetail from "./components/others/xvdetail.jsx";
 
 const store = createStore((state={
-<<<<<<< HEAD
     name:"测试",
     src:"",
     isShowGallery:false,
@@ -25,29 +24,12 @@ const store = createStore((state={
 	isShow:false
 },action)=>{
     switch(action.type){
-    	case "changeName":
-    		return {}
-    		break;
-     	case "SaveMusic_id":
-    		return Object.assign({}, state, {
-            	music_id: action.music_id            	
-			})
-    		break;
-=======
-    src:'',
-	isShow:false,
-    isShowGallery:false,
-    videoId:"",
-    vlength:0
-},action)=>{
-    switch(action.type){
      	case "changeSrc":
 			return Object.assign({},state,{
 				src:action.src,
 				isShow:action.isShow
 			})
 			break;
->>>>>>> 1d45e5c3756aa7bad49938e322a19d2aeef00052
      	case "changeVid":
     		return Object.assign({}, state, {
             	videoId: action.videoId,
@@ -64,17 +46,15 @@ const store = createStore((state={
             	videoId: action.videoId,
           	})
     		break;
-    	case "changeSrc":
-			return Object.assign({},state,{
-				src:action.src,
-				isShow:action.isShow
+    	case "SaveMusic_id":
+    		return Object.assign({}, state, {
+            	music_id: action.music_id            	
 			})
-			break;
+    		break;
      	default:
      		return state
     }
 })
-
 ReactDOM.render(
     <Provider store={store}>
         <Router>
@@ -82,11 +62,7 @@ ReactDOM.render(
 				<Route path="/music_detail" component={Xmusic_detail}></Route>
                 <Route path="/reading_detail" component={Xreading_detail}></Route>
                 <Route path="/index" component={Xindex}></Route>
-<<<<<<< HEAD
                 <Route path="/picdetail/:id" component={Xpicturedetail}></Route>   
-=======
-                <Route path="/picdetail/:id" component={Xpicturedetail}></Route>
->>>>>>> 1d45e5c3756aa7bad49938e322a19d2aeef00052
                 <Route path="/picdetail" component={Xpicturedetail}></Route>   
                 <Route path="/vdetail" component={Xvdetail}></Route>
             </div>
