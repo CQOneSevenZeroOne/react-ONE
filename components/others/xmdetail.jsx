@@ -129,7 +129,7 @@ class Xmdetail extends React.Component{
 		    </a>
 		    <p className="download-text">下载「一个」APP</p>
 		</div>
-		<div className="vfooter">
+		<div className="footer">
 			<span onClick={this.sub_id.bind(this)}>上一篇</span>
 			<a href="#/index/music">返回</a>
 			<span onClick={this.add_id.bind(this)}>下一篇</span>

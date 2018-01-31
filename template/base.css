@@ -143,7 +143,7 @@ body,p{
     color: black;
     font-size: 28px;
     margin: 94px 20px 0 20px;
-    font-weight: bold;
+    font-weight: 500;
     line-height: 1.3;
 }
 .music_detail .text-simple-author {
