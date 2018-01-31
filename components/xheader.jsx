@@ -4,7 +4,8 @@ export default class Xheader extends React.Component {
 	constructor(props){
 		super(props);
 		this.state={
-			leftVal:"-150px"
+			isShowUl:false,
+			isShowInput:false
 		}
 	}
   render() {
@@ -19,19 +20,42 @@ export default class Xheader extends React.Component {
         textAlign: "center",
         backgroundColor: "#fff"
         }}>
-      			<img src={require("../public/img/icon_menu.png")}  onClick={this.changeLeft.bind(this)}/>
+      			<img src={require("../public/img/icon_menu.png")}  onClick={this.showUl.bind(this)}/>
       			<span>ONE</span>
-      			<img src={require("../public/img/search_min.png")} style={{width:"18px",height:"18px"}} />
+      			<img src={require("../public/img/search_min.png")} style={{width:"18px",height:"18px"}} onClick={this.showInput.bind(this)}/>
       </header>
-      <ul className="sideMenu" style={{left:this.state.leftVal}}>
+      <ul className="sideMenu" style={{display:this.state.isShowUl?'block':'none'}}>
       	<li><a href="#">App下载</a></li>
       	<li><a href="#">关于</a></li>
+      	<li><img src={'/img/close.png'} onClick={this.hideUl.bind(this)}/></li>
       </ul>
+      <div className="search_box" style={{display:this.state.isShowInput?'block':'none'}}>
+	      <div className="search_input" >
+	      	<input type="text" placeholder="请输入关键字"/>
+	      	<img src={require("../public/img/search_active.png")}  />
+	      	<img src={require("../public/img/close.png")} style={{width:"18px",height:"18px",marginRight:"20px",marginLeft:"20px"}} onClick={this.closeInput.bind(this)}/>
+	      </div>
+      </div>
     </div>)
   }
-  changeLeft(){
+  showUl(){
   	this.setState({
-  		leftVal:"0px"
+  		isShowUl:true
+  	})
+  }
+  hideUl(){
+  	this.setState({
+  		isShowUl:false
+  	})
+  }
+  showInput(){
+  	this.setState({
+  		isShowInput:true
+  	})
+  }
+  closeInput(){
+  	this.setState({
+  		isShowInput:false
   	})
   }
 }
