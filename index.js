@@ -17,11 +17,16 @@ const store = createStore((state={
     name:"测试",
     src:"",
     isShowGallery:false,
+<<<<<<< HEAD
+    reading_id:""
+    
+=======
     videoId:"",
     vlength:0,
     music_id:0,
     src:'',
 	isShow:false
+>>>>>>> 0f621648a70fcac23634bbf4945bbb80f2e24548
 },action)=>{
     switch(action.type){
      	case "changeSrc":
@@ -46,10 +51,27 @@ const store = createStore((state={
             	videoId: action.videoId,
           	})
     		break;
+<<<<<<< HEAD
+    	case "readingId":
+    		return Object.assign({}, state, {
+            	reading_id: action.id
+            })
+    		break;
+    		case "Next":
+    		return Object.assign({}, state, {
+            	reading_id: action.reading_id
+            })
+    		break;
+    		case "Prev":
+    		return Object.assign({}, state, {
+            	reading_id: action.reading_id
+            })
+=======
     	case "SaveMusic_id":
     		return Object.assign({}, state, {
             	music_id: action.music_id            	
 			})
+>>>>>>> 0f621648a70fcac23634bbf4945bbb80f2e24548
     		break;
     	
      	default:
@@ -63,7 +85,15 @@ ReactDOM.render(
 				<Route path="/music_detail" component={Xmusic_detail}></Route>
                 <Route path="/reading_detail" component={Xreading_detail}></Route>
                 <Route path="/index" component={Xindex}></Route>
+<<<<<<< HEAD
                 <Route path="/picdetail/:id" component={Xpicturedetail}></Route>   
+=======
+<<<<<<< HEAD
+                <Route path="/picdetail" component={Xpicturedetail}></Route>   
+=======
+                <Route path="/picdetail/:id" component={Xpicturedetail}></Route>   
+>>>>>>> 0f621648a70fcac23634bbf4945bbb80f2e24548
+>>>>>>> b6ce5548c659ee1f8c453f256ae53d0693dfaba8
                 <Route path="/vdetail" component={Xvdetail}></Route>
             </div>
         </Router>
