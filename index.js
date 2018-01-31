@@ -16,7 +16,9 @@ import Xvdetail from "./components/others/xvdetail.jsx";
 const store = createStore((state={
     name:"测试",
     src:"",
-    isShowGallery:false
+    isShowGallery:false,
+    reading_id:""
+    
 },action)=>{
     switch(action.type){
     	case "changeName":
@@ -27,6 +29,21 @@ const store = createStore((state={
             	src: action.src,
             	isShowGallery: action.isShowGallery
           	})
+    		break;
+    	case "readingId":
+    		return Object.assign({}, state, {
+            	reading_id: action.id
+            })
+    		break;
+    		case "Next":
+    		return Object.assign({}, state, {
+            	reading_id: action.reading_id
+            })
+    		break;
+    		case "Prev":
+    		return Object.assign({}, state, {
+            	reading_id: action.reading_id
+            })
     		break;
      	default:
      		return state
@@ -39,7 +56,7 @@ ReactDOM.render(
             <div>
 				<Route path="/music_detail" component={Xmusic_detail}></Route>
                 <Route path="/reading_detail" component={Xreading_detail}></Route>
-                <Route exact path="/" component={Xindex}></Route>
+                <Route path="/index" component={Xindex}></Route>
                 <Route path="/picdetail" component={Xpicturedetail}></Route>   
                 <Route path="/vdetail" component={Xvdetail}></Route>
             </div>
