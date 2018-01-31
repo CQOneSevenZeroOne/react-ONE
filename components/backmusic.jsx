@@ -1,5 +1,4 @@
 import React from "react";
-import "../template/share.css";
 import { HashRouter as Router, Route, Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 class Xbackmusic extends React.Component {

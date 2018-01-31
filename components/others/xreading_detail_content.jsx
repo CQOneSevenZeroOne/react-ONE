@@ -4,12 +4,14 @@ import $ from 'jQuery';
 import { HashRouter as Router, Route, Link} from 'react-router-dom';
 import  '../../template/reading.css';
 import {connect} from "react-redux";
+import Xgallery from '../xgallery.jsx';
 class Xreading_detail_content extends React.Component {
 	constructor(props){
 		super(props);
 		this.state = {
 			arr:[],
-			reId:0
+			reId:0,
+			bool:false
 		}
 	}
   render() {
@@ -27,11 +29,12 @@ class Xreading_detail_content extends React.Component {
 	   	 		}
 	   		</div>
 	   		<div className="vfooter">
-					<span onClick={this.subDetail.bind(this)}>上一篇</span>
-					<Link to="/index/reading">返回</Link>
-					<span onClick={this.addDetail.bind(this)}>下一篇</span>
-				</div>
+				<span onClick={this.subDetail.bind(this)}>上一篇</span>
+				<Link to="/index/reading">返回</Link>
+				<span onClick={this.addDetail.bind(this)}>下一篇</span>
 			</div>
+			<Xgallery />
+		</div>
    	 )
   }
   readDetail(){
@@ -116,6 +119,16 @@ export default connect((state)=>{
 	return state
 },(dispatch,props)=>{
 	return {
+		showGallery(e){
+				this.setState({
+					bool:true
+				})
+				dispatch({
+					type:'changeSrc',
+					src:e.target.src,
+					isShow:true
+				})
+			}
 		
 			/*Next(){
 			console.log("tonext",this.props.reading_id)

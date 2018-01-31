@@ -75,7 +75,7 @@ app.post("/getOneById",function(req,res){
 		res.send(JSON.stringify(results));
 	})
 })
-<<<<<<< HEAD
+
 //阅读列表页
 app.post("/getReading",function(req,res){
 	//解决跨域问题
@@ -97,8 +97,6 @@ app.post("/getReading_detail",function(req,res){
 		res.send(JSON.stringify(results));
 	});
 })
-=======
->>>>>>> 0f621648a70fcac23634bbf4945bbb80f2e24548
 //监听端口
 server.listen(3000)
 console.log("开启服务器")
