@@ -3,6 +3,7 @@ var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var path = require("path");
 module.exports = {
+	devtool:"source-map",
   // 入口 引入根目录下的index.js
   entry: './index.js',
   // 出口 导出到public下的bundle.js

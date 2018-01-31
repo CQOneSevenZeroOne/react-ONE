@@ -20,7 +20,6 @@ const store = createStore((state={
     reading_id:"",
     videoId:"",
     vlength:0,
-    music_id:0,
     src:'',
 	isShow:false
 },action)=>{
@@ -52,21 +51,7 @@ const store = createStore((state={
             	reading_id: action.id
             })
     		break;
-    		case "Next":
-    		return Object.assign({}, state, {
-            	reading_id: action.reading_id
-            })
-    		break;
-    		case "Prev":
-    		return Object.assign({}, state, {
-            	reading_id: action.reading_id
-           })
-    	case "SaveMusic_id":
-    		return Object.assign({}, state, {
-            	music_id: action.music_id            	
-			})
-    		break;
-     	default:
+    	default:
      		return state
     }
 })
@@ -77,9 +62,9 @@ ReactDOM.render(
 				<Route path="/music_detail" component={Xmusic_detail}></Route>
                 <Route path="/reading_detail" component={Xreading_detail}></Route>
                 <Route path="/index" component={Xindex}></Route>
-                <Route path="/picdetail" component={Xpicturedetail}></Route>   
+				<Route path="/picdetail" component={Xpicturedetail}></Route>   
                 <Route path="/picdetail/:id" component={Xpicturedetail}></Route>   
-                <Route path="/vdetail" component={Xvdetail}></Route>
+				<Route path="/vdetail" component={Xvdetail}></Route>
             </div>
         </Router>
     </Provider>

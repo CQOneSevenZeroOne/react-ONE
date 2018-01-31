@@ -10,8 +10,7 @@ class Xreading_detail_content extends React.Component {
 		super(props);
 		this.state = {
 			arr:[],
-			reId:0,
-			bool:false
+			reId:0
 		}
 	}
   render() {
@@ -119,16 +118,6 @@ export default connect((state)=>{
 	return state
 },(dispatch,props)=>{
 	return {
-		showGallery(e){
-				this.setState({
-					bool:true
-				})
-				dispatch({
-					type:'changeSrc',
-					src:e.target.src,
-					isShow:true
-				})
-			}
 		
 			/*Next(){
 			console.log("tonext",this.props.reading_id)

@@ -1,6 +1,7 @@
 import React from 'react';
 import Xheader  from '../xheader.jsx';
 import Xmdetail  from '../others/xmdetail.jsx';
+
 class Xmusic_detail extends React.Component{
     constructor(props){
         super(props)
