@@ -26,7 +26,7 @@ class Xreading_detail_content extends React.Component {
 	   	 			}(this)
 	   	 		}
 	   		</div>
-	   		<div className="vfooter">
+	   		<div className="footer">
 					<span onClick={this.subDetail.bind(this)}>上一篇</span>
 					<Link to="/index/reading">返回</Link>
 					<span onClick={this.addDetail.bind(this)}>下一篇</span>
