@@ -3,7 +3,7 @@ import "../../template/base.css";
 import {connect} from 'react-redux';
 import $ from "jQuery";
 import { HashRouter as Router, Route, Link} from 'react-router-dom';
-import "../../template/share.css";
+import "../../template/reading.css";
 class Xmdetail extends React.Component{
     constructor(props){
         super(props)
