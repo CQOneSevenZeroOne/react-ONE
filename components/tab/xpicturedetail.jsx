@@ -75,7 +75,7 @@ class Xpicturedetail extends React.Component {
 			async:true,
 			dataType:'json',
 			data:{
-				id:Number(this.props.match.params.id)+1
+				id:Number(_this.props.match.params.id)+1
 			},
 			success(data){
 				if(data!=''){

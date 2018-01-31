@@ -29,10 +29,12 @@ export default class Xheader extends React.Component {
       	<li><a href="#">关于</a></li>
       	<li><img src={'/img/close.png'} onClick={this.hideUl.bind(this)}/></li>
       </ul>
-      <div className="search_input" style={{display:this.state.isShowInput?'block':'none'}}>
-      	<input type="text" placeholder="请输入关键字"/>
-      	<img src={require("../public/img/search_active.png")}  />
-      	<img src={require("../public/img/close.png")} style={{width:"18px",height:"18px",marginRight:"20px",marginLeft:"20px"}} onClick={this.closeInput.bind(this)}/>
+      <div className="search_box" style={{display:this.state.isShowInput?'block':'none'}}>
+	      <div className="search_input" >
+	      	<input type="text" placeholder="请输入关键字"/>
+	      	<img src={require("../public/img/search_active.png")}  />
+	      	<img src={require("../public/img/close.png")} style={{width:"18px",height:"18px",marginRight:"20px",marginLeft:"20px"}} onClick={this.closeInput.bind(this)}/>
+	      </div>
       </div>
     </div>)
   }
