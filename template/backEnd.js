@@ -9,7 +9,7 @@ var connect = mysql.createConnection({
 	user:'pyj',
 	password:'123',
 	database:'one'
-});
+})
 // 处理post请求的请求体模块
 var bodyParser = require('body-parser')
 // parse application/x-www-form-urlencoded
@@ -25,18 +25,17 @@ app.post("/getVideo",function(req,res){
 	connect.query('SELECT * FROM video', function(error, results, fields) {
 		if(error) throw error;
 		res.send(JSON.stringify(results));
-	});
+	})
 })
 //根据id获取影视的详细信息
 app.post("/getVideoAll",function(req,res){
 	//解决跨域问题
 	res.append("Access-Control-Allow-Origin","*");
 	//连接后执行相应功能
-	
-	connect.query(`SELECT * FROM video where id = ${req.body.id}`, function(error, results, fields) {
+	connect.query(`SELECT * FROM video where video_id = ${req.body.id}`, function(error, results, fields) {
 		if(error) throw error;
 		res.send(JSON.stringify(results));
-	});
+	})
 })
 //显示音乐列表
 app.post("/getMusicAll",function(req,res){
@@ -46,19 +45,36 @@ app.post("/getMusicAll",function(req,res){
 	connect.query(`SELECT * FROM music`, function(error, results, fields) {
 		if(error) throw error;
 		res.send(JSON.stringify(results));
-	});
+	})
 })
 //显示音乐详情
 app.post("/getMusicDetail",function(req,res){
 	//解决跨域问题
 	res.append("Access-Control-Allow-Origin","*");
 	//连接后执行相应功能
-	console.log(req.body.id)
 	connect.query(`SELECT * FROM music where id = ${req.body.id}`, function(error, results, fields) {
 		if(error) throw error;
 		res.send(JSON.stringify(results));
-	});
+	})
+})
+//获取所有的首页数据
+app.post("/getAllOne",function(req,res){
+	//解决跨域问题
+	res.append("Access-Control-Allow-Origin","*");
+	connect.query(`select * from tb_one  ORDER BY pic_date DESC`,function(error,results,fields){
+		if(error)throw error;
+		res.send(JSON.stringify(results));
+	})
+})
+//通过id获取所有tb_one中的数据
+app.post("/getOneById",function(req,res){
+	//解决跨域问题
+	res.append("Access-Control-Allow-Origin","*");
+	connect.query(`select * from tb_one  where id='${req.body.id}'`,function(error,results,fields){
+		if(error)throw error;
+		res.send(JSON.stringify(results));
+	})
 })
 //监听端口
-server.listen(3000);
+server.listen(3000)
 console.log("开启服务器")
