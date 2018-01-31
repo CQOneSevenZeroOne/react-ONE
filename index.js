@@ -51,6 +51,7 @@ const store = createStore((state={
             	music_id: action.music_id            	
 			})
     		break;
+    	
      	default:
      		return state
     }
@@ -63,7 +64,6 @@ ReactDOM.render(
                 <Route path="/reading_detail" component={Xreading_detail}></Route>
                 <Route path="/index" component={Xindex}></Route>
                 <Route path="/picdetail/:id" component={Xpicturedetail}></Route>   
-                <Route path="/picdetail" component={Xpicturedetail}></Route>   
                 <Route path="/vdetail" component={Xvdetail}></Route>
             </div>
         </Router>

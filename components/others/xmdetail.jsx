@@ -2,25 +2,32 @@ import React from 'react';
 import "../../template/base.css";
 import {connect} from 'react-redux';
 import $ from "jQuery";
+import { HashRouter as Router, Route, Link} from 'react-router-dom';
+import "../../template/share.css";
 class Xmdetail extends React.Component{
     constructor(props){
         super(props)
         this.state={
-        	obj:{} 	
+        	obj:{
+        		img1:""
+        	},
+        	mid:0,
+        	img:true
         }
     }
 	render(){
 		return (
             <div className="music_detail">
                 <div className="text-detail">
-	                <div style={{position:'relative',clear:'both',height:'356px',}}>
+	                <div style={{position:'relative',clear:'both',height:'356px'}}>
 	                <div style={{position:'absolute',left:'-186px',top:'-134px',width:'490px',height:'490px',borderRadius:'245px 245px 245px 0px',boxShadow:'0 0 20px 5px rgba(230,230,230,0.6)'}}>
 	                    &nbsp;</div>
 	                <div style={{position:'absolute',left:'-168px',top:'-116px',width:'454px',height:'454px',borderRadius:'227px 227px 227px 226px',backgroundImage:"url("+this.state.obj.img1+")",backgroundSize:'cover', overflow:'hidden'}}>
 	                    &nbsp;</div>
-	                <div style={{position:'absolute',left:'23px',top:'75px',width:'72px',height:'72px'}} id="music-play-btn" className="music-detail-status">
-	                    <img src="http://image.wufazhuce.com/music-detail-play.png" style={{width:"100%"}} className="play-btn one-image-exclude"/>
-	                    <img src="http://image.wufazhuce.com/music-detail-pause.png" style={{width:"100%",display:'none'}} className="pause-btn one-image-exclude"/>
+	                <div onClick={this.changeImg.bind(this)} style={{position:'absolute',left:'95px',top:'100px',width:'72px',height:'72px'}} id="music-play-btn" className="music-detail-status">
+	                    <img src="http://image.wufazhuce.com/music-detail-play.png" style={{width:"100%",display:this.state.img?"block":"none"}} className="play-btn one-image-exclude"/>
+	                    <img src="http://image.wufazhuce.com/music-detail-pause.png" style={{width:"100%",display:this.state.img?"none":"block"}} className="pause-btn one-image-exclude"/>
+	                    <audio id="mp3box" src={this.state.obj.audio} loop></audio>
 	                </div>
 	                <div style={{display:'none'}} id="popupXiamiMusic-placeholder"></div>
             	</div>
@@ -122,36 +129,96 @@ class Xmdetail extends React.Component{
 		    </a>
 		    <p className="download-text">下载「一个」APP</p>
 		</div>
+		<div className="vfooter">
+			<span onClick={this.sub_id.bind(this)}>上一篇</span>
+			<a href="#/index/music">返回</a>
+			<span onClick={this.add_id.bind(this)}>下一篇</span>
+		</div>
     </div>
     
         )
 	}
 	componentDidMount(){
         var _this=this;
+        var detail_url=window.location.href.split("/")
+		$.ajax({
+			url:"http://localhost:3000/getMusicDetail",
+			type:"post",
+			dataType:"json",
+			data:{
+				id:Number(detail_url[detail_url.length-1])
+			},
+			success(data){					
+				_this.setState({
+					obj:data[0],
+					mid:data[0].id
+				})
+			},
+			error(){
+				console.log('error');
+			}
+		})
+   	}
+	add_id(){
+		var _this=this;	
     		$.ajax({
     			url:"http://localhost:3000/getMusicDetail",
     			type:"post",
     			dataType:"json",
     			data:{
-    				id:_this.props.music_id
+    				id:Number(_this.state.mid)+1
     			},
-    			success(data){					
+    			success(data){
+    				if(data!=''){
 					_this.setState({
 						obj:data[0],
+						mid:data[0].id
 					})
-				
+					location.href="#/music_detail/"+Number(_this.state.mid)
+				}else{
+					location.href="#/music_detail/"+Number(_this.state.mid)
+				}
 				},
 				error(){
 					console.log('error');
 				}
     		})
-   	}
-}
-export default connect((state)=>{
-	console.log(state)
-	return state
-},(dispatch,props)=>{
-	return {
-		
+    }
+	sub_id(){
+		var _this=this;
+    		$.ajax({
+    			url:"http://localhost:3000/getMusicDetail",
+    			type:"post",
+    			dataType:"json",
+    			data:{
+    				id:Number(_this.state.mid)-1
+    			},
+    			success(data){					
+					if(data!=''){
+					_this.setState({
+						obj:data[0],
+						mid:data[0].id
+					})
+					location.href="#/music_detail/"+Number(_this.state.mid)
+				}else{
+					location.href="#/music_detail/"+Number(_this.state.mid)
+				}
+				},
+				error(){
+					console.log('error');
+				}
+    		})
 	}
-})(Xmdetail);
+	changeImg(){
+		var audio = document.getElementById('mp3box');
+		this.setState({
+			img:!this.state.img
+		})	
+		if(audio.paused){ //如果当前是暂停状态
+            audio.play();//播放
+            return;
+        }
+        audio.pause(); //暂停
+	}
+}
+export default Xmdetail
