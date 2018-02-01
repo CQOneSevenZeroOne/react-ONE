@@ -4,6 +4,7 @@ import $ from 'jQuery';
 import { HashRouter as Router, Route, Link} from 'react-router-dom';
 import  '../../template/reading.css';
 import {connect} from "react-redux";
+import Xgallery from '../xgallery.jsx';
 class Xreading_detail_content extends React.Component {
 	constructor(props){
 		super(props);
@@ -26,12 +27,12 @@ class Xreading_detail_content extends React.Component {
 	   	 			}(this)
 	   	 		}
 	   		</div>
-	   		<div className="footer">
+			<div className="footer">
 					<span onClick={this.subDetail.bind(this)}>上一篇</span>
 					<Link to="/index/reading">返回</Link>
 					<span onClick={this.addDetail.bind(this)}>下一篇</span>
-				</div>
 			</div>
+		</div>
    	 )
   }
   readDetail(){

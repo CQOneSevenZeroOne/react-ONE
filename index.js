@@ -52,17 +52,7 @@ const store = createStore((state={
             	reading_id: action.id
             })
     		break;
-    		case "Next":
-    		return Object.assign({}, state, {
-            	reading_id: action.reading_id
-            })
-    		break;
-    		case "Prev":
-    		return Object.assign({}, state, {
-            	reading_id: action.reading_id
-            })
-			break;
-     	default:
+    	default:
      		return state
     }
 })
@@ -74,8 +64,7 @@ ReactDOM.render(
                 <Route path="/reading_detail" component={Xreading_detail}></Route>
                 <Route path="/index" component={Xindex}></Route>
                 <Route path="/picdetail/:id" component={Xpicturedetail}></Route>   
-                <Route path="/picdetail" component={Xpicturedetail}></Route>   
-                <Route path="/vdetail" component={Xvdetail}></Route>
+				<Route path="/vdetail" component={Xvdetail}></Route>
             </div>
         </Router>
     </Provider>

@@ -11,7 +11,6 @@ class Xmusic_detail extends React.Component{
             <div>
                 <Xheader />
                 <Xmdetail />
-
             </div>
         )
 	}
