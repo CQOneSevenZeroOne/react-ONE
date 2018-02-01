@@ -57,6 +57,37 @@ app.post("/getMusicDetail",function(req,res){
 		res.send(JSON.stringify(results));
 	})
 })
+//显示评论
+app.post("/getcomment",function(req,res){
+	//解决跨域问题
+	res.append("Access-Control-Allow-Origin","*");
+	//连接后执行相应功能
+	connect.query(`SELECT * FROM comment ORDER BY TIME DESC limit 3`, function(error, results, fields) {
+		if(error) throw error;
+		res.send(JSON.stringify(results));
+	})
+})
+//插入评论
+app.post("/showcomment",function(req,res){
+	//解决跨域问题
+	res.append("Access-Control-Allow-Origin","*");
+	//连接后执行相应功能
+	console.log(req.body)
+	connect.query(`INSERT INTO comment( name, time, content, icon) VALUES ('${req.body.name}','${req.body.time}','${req.body.content}','${req.body.icon}')`, function(error, results, fields) {
+		if(error) throw error;
+		res.send(JSON.stringify(results));
+	})
+})
+//改变评论
+app.post("/changecomment",function(req,res){
+	//解决跨域问题
+	res.append("Access-Control-Allow-Origin","*");
+	//连接后执行相应功能
+	connect.query(`SELECT * FROM comment ORDER BY TIME DESC limit 3`, function(error, results, fields) {
+		if(error) throw error;
+		res.send(JSON.stringify(results));
+	})
+})
 //获取所有的首页数据
 app.post("/getAllOne",function(req,res){
 	//解决跨域问题

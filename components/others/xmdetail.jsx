@@ -12,12 +12,17 @@ class Xmdetail extends React.Component{
         		img1:""
         	},
         	mid:0,
-        	img:true
+        	img:true,
+        	comment:false,
+        	arr1:[],
+        	search:'',
+        	showDailog:false,
+        	showDailog2:false
         }
     }
 	render(){
 		return (
-            <div className="music_detail">
+            <div className="music_detail" >
                 <div className="text-detail">
 	                <div style={{position:'relative',clear:'both',height:'356px'}}>
 	                <div style={{position:'absolute',left:'-186px',top:'-134px',width:'490px',height:'490px',borderRadius:'245px 245px 245px 0px',boxShadow:'0 0 20px 5px rgba(230,230,230,0.6)'}}>
@@ -57,72 +62,57 @@ class Xmdetail extends React.Component{
 	            </tr>
         	</tbody>
     	</table>
-	    <p className="page-sparate-title">评论内容</p>
+    	<div style={{margin: '10px 20px',height:'35px',display:this.state.comment?'block':'none'}}>
+	    	<div style={{float:'left',border:'1px solid #ddd',width:'200px',borderRadius:'10px',height:'30px'}}>
+	    		<input type='text' onChange={this.getIunputValue.bind(this)} value={this.state.search} style={{border:'none',outline:'none',height:'17px',paddingLeft:'10px'}}/>	
+	    	</div>
+	    	<span onClick={this.sendcomment.bind(this)} style={{width:'45px',height:'30px',lineHeight:'30px',textAlign:'center',float:'right',border:'1px solid #ddd',borderRadius:'10px',fontSize:'14px',color:'#888'}}>发表</span>
+    	</div>
+    	<div style={{height:'27px',marginRight:'20px'}}>
+	    	<p className="page-sparate-title" style={{float:'left',marginTop:'0px'}}>评论内容</p>
+	    	<img src='http://10.40.153.73:88/one/public/img/comment.png' onClick={this.commentImg.bind(this)} style={{float:'right',width:'25px'}}/>
+	    </div>
 	    <hr className="sort-separate-line"/>
 	    <table className="page-table">
         	<tbody>
-            	<tr>
-	                <td style={{width: "20px"}}>
-	                    <img className="one-image-exclude avater-small" src="http://image.wufazhuce.com/FuD8SLVAZ79Yoxx6uak8tmNCNtCJ?imageView2/1/w/80/h/80/q/75"
-	                        alt="谈谈想和这个世界８８"/>
-	                </td>
-	                <td>
-	                    <div className="comment-user-info">
-	                        <ul>
-	                            <li>谈谈想和这个世界８８</li>
-	                            <li>2017-08-20 22:04:20</li>
-	                        </ul>
-	                    </div>
-	                    <div className="comment-content">会有一个早已删了 却不会忘的号码 永远不会再打 再见，一个音乐。
-	                    </div>
-	                </td>
-	            </tr>
-	            <tr>
-	                <td colSpan="2">
-	                    <div className="separate-line"></div>
-	                </td>
-	            </tr>
-	            <tr>
-	                <td style={{width: '20px'}}>
-	                    <img className="one-image-exclude avater-small" src="http://tp4.sinaimg.cn/1411949411/180/22846961249/0" alt="依然11-05"/>
-	                </td>
-	                <td>
-	                    <div className="comment-user-info">
-	                        <ul>
-	                            <li>依然11-05</li>
-	                            <li>2017-08-21 18:28:38</li>
-	                        </ul>
-	                    </div>
-	                    <div className="comment-content">越长大越发现人的渺小和无奈，我们唯一能做好的就是用好的心念善待经历的一切，毕竟一生太短，路还很长。</div>
-	                </td>
-	            </tr>
-	            <tr>
-	                <td colSpan="2">
-	                    <div className="separate-line"></div>
-	                </td>
-	            </tr>
-	            <tr>
-	                <td style={{width: '20px'}}>
-	                    <img className="one-image-exclude avater-small" src="http://image.wufazhuce.com/Fufr6JBrXmJr1wqAXVoZ3qtItlSK?imageView2/1/w/80/h/80/q/75"
-	                        alt="Drummer"/>
-	                </td>
-	                <td>
-	                    <div className="comment-user-info">
-	                        <ul>
-	                            <li>Drummer</li>
-	                            <li>2017-08-29 18:29:45</li>
-	                        </ul>
-	                    </div>
-	                    <div className="comment-content">今天你已算责任完成 赎了上世的罪 贺你 全身的退</div>
-	                </td>
-	            </tr>
-	            <tr>
-	                <td colSpan="2">
-	                    <div className="separate-line"></div>
-	                </td>
-	            </tr>
+        	{
+            function(self){
+                return self.state.arr1.map((item,index)=>{
+                    return (
+		            	<tr key={index}>
+			                <td style={{width: "20px"}}>
+			                    <img className="one-image-exclude avater-small" src={item.icon}/>
+			                </td>
+			                <td>
+			                    <div className="comment-user-info">
+			                        <ul>
+			                            <li>{item.name}</li>
+			                            <li>{item.time}</li>
+			                        </ul>
+			                    </div>
+			                    <div className="comment-content">{item.content}</div>
+			                </td>
+			            </tr>
+			        	)
+		             })
+		          }(this)
+		        }
         	</tbody>
     	</table>
+    	<div id="toast1" style={{opacity:this.state.showDailog?1:0,display:this.state.showDailog?'block':'none'}}>
+	        <div className="weui-mask_transparent" onClick={this.hide.bind(this)}></div>
+	        <div className="weui-toast" >
+	            <i className="weui-icon-success-no-circle weui-icon_toast"></i>
+	            <p className="weui-toast__content">最后一篇</p>
+	        </div>
+    	</div>
+    	<div id="toast2" style={{opacity:this.state.showDailog2?1:0,display:this.state.showDailog2?'block':'none'}}>
+	        <div className="weui-mask_transparent" onClick={this.hide2.bind(this)}></div>
+	        <div className="weui-toast" >
+	            <i className="weui-icon-success-no-circle weui-icon_toast"></i>
+	            <p className="weui-toast__content">第一篇</p>
+	        </div>
+    	</div>
 	    <div className="download">
 		    <a href="http://m.wufazhuce.com/download"  className="ui-link">
 		        <img alt="「ONE · 一个」" className="one-image-exclude logo-img" src="http://image.wufazhuce.com/app_download.png"/>
@@ -138,9 +128,11 @@ class Xmdetail extends React.Component{
     
         )
 	}
+	//显示数据
 	componentDidMount(){
         var _this=this;
         var detail_url=window.location.href.split("/")
+        {/*获取内容*/}
 		$.ajax({
 			url:"http://localhost:3000/getMusicDetail",
 			type:"post",
@@ -158,7 +150,22 @@ class Xmdetail extends React.Component{
 				console.log('error');
 			}
 		})
+		//获取评论
+		$.ajax({
+			url:"http://localhost:3000/getcomment",
+			type:"post",
+			dataType:"json",
+			success(data){					
+				_this.setState({
+					arr1:data
+				})
+			},
+			error(){
+				console.log('error');
+			}
+		})
    	}
+	//下一篇
 	add_id(){
 		var _this=this;	
     		$.ajax({
@@ -176,7 +183,9 @@ class Xmdetail extends React.Component{
 					})
 					location.href="#/music_detail/"+Number(_this.state.mid)
 				}else{
-					location.href="#/music_detail/"+Number(_this.state.mid)
+					_this.setState({
+						showDailog:true
+					})
 				}
 				},
 				error(){
@@ -184,6 +193,7 @@ class Xmdetail extends React.Component{
 				}
     		})
     }
+	//上一篇
 	sub_id(){
 		var _this=this;
     		$.ajax({
@@ -201,7 +211,9 @@ class Xmdetail extends React.Component{
 					})
 					location.href="#/music_detail/"+Number(_this.state.mid)
 				}else{
-					location.href="#/music_detail/"+Number(_this.state.mid)
+					_this.setState({
+						showDailog2:true
+					})
 				}
 				},
 				error(){
@@ -209,6 +221,18 @@ class Xmdetail extends React.Component{
 				}
     		})
 	}
+	//关闭弹出层1
+	hide(){
+		this.setState({
+			showDailog:!this.state.showDailog
+		})
+	}
+	hide2(){
+		this.setState({
+			showDailog2:!this.state.showDailog2
+		})
+	}
+	//播放音乐
 	changeImg(){
 		var audio = document.getElementById('mp3box');
 		this.setState({
@@ -220,5 +244,55 @@ class Xmdetail extends React.Component{
         }
         audio.pause(); //暂停
 	}
+	//显示评论框
+	commentImg(){
+		this.setState({
+			comment:!this.state.comment
+		})	
+	}
+	//获取评论内容
+	 getIunputValue(event){
+        this.setState({
+            search: event.target.value
+        })
+    }
+	 //将评论内容存入数据库,然后显示在页面上
+	 sendcomment(){
+	 	var _this=this;
+	 	this.setState({
+            search:'',
+            comment:!this.state.comment
+        })
+    		$.ajax({
+    			url:"http://localhost:3000/showcomment",
+    			type:"post",
+    			dataType:"json",
+    			data:{
+    				content:_this.state.search,
+    				name:"一只小疯子",
+    				time:new Date().toLocaleTimeString(),
+    				icon:"http://10.40.153.73:88/one/public/img/music1.jpg"
+    			},
+    			success(data){					
+					$.ajax({
+						url:"http://localhost:3000/changecomment",
+						type:"post",
+						dataType:"json",
+						success(data){
+							console.log(data)
+							_this.setState({
+								arr1:data
+							})
+						},
+						error(){
+							console.log('error');
+						}
+					})		
+				},
+				error(){
+					console.log('error');
+				}
+    		})
+	 }
 }
 export default Xmdetail

@@ -3,6 +3,7 @@ import React from 'react'
 // router
 import { HashRouter as Router, Route, Link} from 'react-router-dom'
 // redux
+import "weui"
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 
