@@ -282,7 +282,7 @@ class Xmdetail extends React.Component{
     				content:_this.state.search,
     				name:sessionStorage.getItem("name"),
     				time:new Date().toLocaleTimeString(),
-    				icon:"http://10.40.153.73:88/one/public/img/music1.jpg"
+    				icon:"/img/music1.jpg"
     			},
     			success(data){					
 					$.ajax({
