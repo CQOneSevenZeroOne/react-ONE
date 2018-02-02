@@ -17,7 +17,8 @@ class Xmdetail extends React.Component{
         	arr1:[],
         	search:'',
         	showDailog:false,
-        	showDailog2:false
+        	showDailog2:false,
+        	loginBox:false
         }
     }
 	render(){
@@ -113,8 +114,17 @@ class Xmdetail extends React.Component{
 	            <p className="weui-toast__content">第一篇</p>
 	        </div>
     	</div>
+    	<div className="js_dialog" id="iosDialog2" style={{opacity:this.state.loginBox?1:0,display:this.state.loginBox?'block':'none'}}>
+            <div className="weui-mask"></div>
+            <div className="dialog">
+                <div className="weui-dialog__bd">登录了才能发表评论呦</div>
+                <div className="weui-dialog__ft">
+                    <a href="#/login" className="weui-dialog__btn weui-dialog__btn_primary">去登录</a>
+                </div>
+            </div>
+        </div>
 	    <div className="download">
-		    <a href="http://m.wufazhuce.com/download"  className="ui-link">
+		    <a href="##"  className="ui-link">
 		        <img alt="「ONE · 一个」" className="one-image-exclude logo-img" src="http://image.wufazhuce.com/app_download.png"/>
 		    </a>
 		    <p className="download-text">下载「一个」APP</p>
@@ -257,19 +267,20 @@ class Xmdetail extends React.Component{
         })
     }
 	 //将评论内容存入数据库,然后显示在页面上
-	 sendcomment(){
+	 sendcomment(){	 
 	 	var _this=this;
-	 	this.setState({
-            search:'',
-            comment:!this.state.comment
-        })
+	 	if(sessionStorage.length>=1){
+		 	this.setState({
+	            search:'',
+	            comment:!this.state.comment
+	        })
     		$.ajax({
     			url:"http://localhost:3000/showcomment",
     			type:"post",
     			dataType:"json",
     			data:{
     				content:_this.state.search,
-    				name:"一只小疯子",
+    				name:sessionStorage.getItem("name"),
     				time:new Date().toLocaleTimeString(),
     				icon:"http://10.40.153.73:88/one/public/img/music1.jpg"
     			},
@@ -293,6 +304,11 @@ class Xmdetail extends React.Component{
 					console.log('error');
 				}
     		})
+    	}else if(sessionStorage.length==0){
+    		this.setState({
+            	loginBox:!this.state.loginBox
+        	})
+    	}
 	 }
 }
 export default Xmdetail

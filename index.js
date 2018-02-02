@@ -3,7 +3,6 @@ import React from 'react'
 // router
 import { HashRouter as Router, Route, Link} from 'react-router-dom'
 // redux
-import "weui"
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 
@@ -13,7 +12,7 @@ import Xmusic_detail from "./components/tab/xmusic_detail.jsx";
 import Xreading_detail from "./components/tab/xreading_detail.jsx";
 import Xpicturedetail from "./components/tab/xpicturedetail.jsx";
 import Xvdetail from "./components/others/xvdetail.jsx";
-
+import Xlogin from "./components/login.jsx";
 const store = createStore((state={
     name:"测试",
     src:"",
@@ -65,6 +64,7 @@ ReactDOM.render(
                 <Route path="/index" component={Xindex}></Route>
                 <Route path="/picdetail/:id" component={Xpicturedetail}></Route>   
 				<Route path="/vdetail" component={Xvdetail}></Route>
+				<Route path="/login" component={Xlogin}></Route>
             </div>
         </Router>
     </Provider>
